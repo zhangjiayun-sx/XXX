@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:300px;
+            height:500px;
+            background-color:darkturquoise;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+</head>
+<body>
+    <div id="app">
+        <button @click="change('jintian')">今天</button>
+        <button @click="change('mingtian')">明天</button>
+        <button @click="change('houtian')">后天</button>
+        <button @click="change('dahoutian')">大后天</button>
+        <component :is="zhi"></component>
+    </div>
+</body>
+<template id="demo">
+    
+</template>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            zhi:'jintian'
+        },
+        methods:{
+            change(v){
+                this.zhi=v;
+            }
+        },
+        components:{
+            'jintian':{
+                template:`
+                    <div>下雨了</div>
+                `
+            },
+            'mingtian':{
+                template:`
+                    <div>忘记他</div>
+                `
+            },
+            'houtian':{
+                template:`
+                    <div>没忘掉</div>
+                `
+            },
+            'dahoutian':{
+                template:`
+                    <div>死了吧</div>
+                `
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:300px;
+            height:500px;
+            background-color:darkviolet;
+            margin:0px auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="change(1)">军事</button>
+        <button @click="change(2)">娱乐</button>
+        <button @click="change(3)">影视</button>
+        <button @click="change(4)">政治</button>
+        <my-demo>
+            <div style="background-color:rgb(83, 13, 245)" v-show="num==1" slot="junshi">军事</div>
+            <div style="background-color:rgb(172, 211, 0)" v-show="num==2" slot="yule">娱乐</div>
+            <div style="background-color:rgb(219, 34, 59)" v-show="num==3" slot="yingshi">影视</div>
+            <div style="background-color:rgb(177, 231, 49)" v-show="num==4" slot="zhengzhi">政治</div>
+        </my-demo>
+    </div>
+</body>
+<template id="demo">
+    <div>
+        <slot name="junshi"></slot>
+        <slot name="yule"></slot>
+        <slot name="yingshi"></slot>
+        <slot name="zhengzhi"></slot>
+    </div>
+</template>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            num:1
+        },
+        methods:{
+            change(n){
+                // console.log(1);
+                this.num=n;
+            }
+        },
+        components:{
+            'MyDemo':{
+                template:'#demo'
+            }
+        }
+    })
+</script>
+</html>

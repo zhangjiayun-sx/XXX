@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:400px;
+            height:500px;
+            background-color:aqua;
+            margin:0px auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+            <button @click="change('junshi')">军事</button>
+            <button @click="change('zhengzhi')">政治</button>
+            <button @click="change('yule')">娱乐</button>
+            <button @click="change('yingshi')">影视圈</button>
+            <component :is="zhi"></component>
+    </div>
+</body>
+<template id="demo">
+
+</template>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            zhi:'junshi'
+        },
+        methods:{
+            change(v){
+                this.zhi=v;
+            }
+        },
+        components:{
+            'junshi':{
+                template:`
+                    <div>庆祝八一建军节</div>
+                `
+            },
+            'zhengzhi':{
+                template:`
+                    <div>华为芯片断供</div>
+                `
+            },
+            'yule':{
+                template:`
+                    <div>JJ好掉啊</div>
+                `
+            },
+            'yingshi':{
+                template:`
+                    <div>啊啊啊啊啊dd啊啊啊</div>
+                `
+            }
+        }
+    })
+</script>
+</html>

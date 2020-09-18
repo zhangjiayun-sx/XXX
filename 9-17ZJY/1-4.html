@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:300px;
+            height:500px;
+            background-color:darkviolet;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="change('xiangqing')">详情</button>
+        <button @click="change('pingjia')">评价</button>
+        <button @click="change('xiaoliang')">销量</button>
+        <button @click="change('tupian')">图片</button>
+        <component :is="zhi"></component>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            zhi:'xiangqing'
+        },
+        methods:{
+            change(v){
+                this.zhi=v;
+            }
+        },
+        components:{
+            'xiangqing':{
+                template:`
+                    <div>很好</div>
+                `
+            },
+            'pingjia':{
+                template:`
+                    <div>霓裳</div>
+                `
+            },
+            'xiaoliang':{
+                template:`
+                    <div>爱了</div>
+                `
+            },
+            'tupian':{
+                template:`
+                    <div>忘记</div>
+                `
+            }
+        }
+    })
+</script>
+</html>
